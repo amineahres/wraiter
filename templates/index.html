@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <input type="text" name="user_input" required>
+        <input type="submit" value="Ask ChatGPT">
+    </form>
+
+    {% if chatgpt_response %}
+        <p>ChatGPT's Response: {{ chatgpt_response }}</p>
+    {% endif %}
+</body>
+</html>
