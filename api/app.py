@@ -25,7 +25,14 @@ def index():
         }
 
         response = requests.post('https://api.openai.com/v1/engines/davinci-codex/completions', headers=headers, data=json.dumps(data))
-        chatgpt_response = response.json()["choices"][0]["message"]["content"]
+
+        # Print the full response for debugging
+        print("API Response:", response.json())
+
+        try:
+            chatgpt_response = response.json()['choices'][0]['text']
+        except KeyError:
+            chatgpt_response = "Error: The API did not return the expected output."
 
         # Save data to Supabase (This part remains unchanged)
         # ... code to save data to Supabase ...
