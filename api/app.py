@@ -6,7 +6,7 @@ import json
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
-chatgpt_api_url = "https://api.openai.com/v1/engines/gpt-3.5-turbo/completions"
+chatgpt_api_url = "https://api.openai.com/v1/chat/completions"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
