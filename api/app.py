@@ -1,8 +1,9 @@
 from flask import Flask, request, render_template
 import openai
 import requests
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
