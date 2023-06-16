@@ -15,10 +15,10 @@ def index():
         chatgpt_response = response.choices[0].text
 
         # Save data to Supabase
-        supabase_url = 'https://qkhixorvlsmwhfjuflqm.supabase.co'
-        supabase_headers = {'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFraGl4b3J2bHNtd2hmanVmbHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY4NDE4NjQsImV4cCI6MjAwMjQxNzg2NH0.6g8qVcUscMlN2GpCG6sDm2LOZngnKGyQ0moEiZaWK8g', 'Content-Type': 'application/json'}
-        payload = {"user_input": user_input, "chatgpt_response": chatgpt_response}
-        requests.post(supabase_url, headers=supabase_headers, json=payload)
+        #supabase_url = 'https://qkhixorvlsmwhfjuflqm.supabase.co'
+        #supabase_headers = {'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFraGl4b3J2bHNtd2hmanVmbHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY4NDE4NjQsImV4cCI6MjAwMjQxNzg2NH0.6g8qVcUscMlN2GpCG6sDm2LOZngnKGyQ0moEiZaWK8g', 'Content-Type': 'application/json'}
+        #payload = {"user_input": user_input, "chatgpt_response": chatgpt_response}
+        #requests.post(supabase_url, headers=supabase_headers, json=payload)
 
         return render_template('index.html', chatgpt_response=chatgpt_response)
 
