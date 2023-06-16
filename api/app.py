@@ -22,6 +22,3 @@ def index():
         return render_template('index.html', chatgpt_response=chatgpt_response)
 
     return render_template('index.html', chatgpt_response=None)
-
-if __name__ == "__main__":
-    app.run(debug=True)
