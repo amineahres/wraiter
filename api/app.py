@@ -18,25 +18,33 @@ def index():
             'Authorization': f'Bearer {OPENAI_API_KEY}',
         }
 
-        data = {
-            'engine': 'davinci-codex',
-            'prompt': user_input,
-            'max_tokens': 100
-        }
+        messages = [
+        {"role": "user", "content": user_input}
+        ]
 
-        response = requests.post('https://api.openai.com/v1/engines/davinci-codex/completions', headers=headers, data=json.dumps(data))
+        # Send the API request to ChatGPT
+        chatgpt_response = requests.post(
+            chatgpt_api_url,
+            headers=headers,
+            json={
+                "messages": messages,
+                "model": "gpt-3.5-turbo",
+                "max_tokens": 2300,
+                "temperature": 0.3
+            }
+        )
 
-        # Print the full response for debugging
-        print("API Response:", response.json())
+        # Handle the ChatGPT response and extract the adapted query
+        if chatgpt_response.status_code == 200:
+           chatgpt_result = chatgpt_response.json()
+           chatgpt_result = chatgpt_result["choices"][0]["message"]["content"]
 
-        try:
-            chatgpt_response = response.json()['choices'][0]['text']
-        except KeyError:
-            chatgpt_response = "Error: The API did not return the expected output."
+        else:
+           print("Error: Failed to receive response from ChatGPT")
+           print(chatgpt_response.status_code)
+           print(chatgpt_response.content)
 
-        # Save data to Supabase (This part remains unchanged)
-        # ... code to save data to Supabase ...
 
-        return render_template('index.html', chatgpt_response=chatgpt_response)
+        return render_template('index.html', chatgpt_response=chatgpt_result)
 
     return render_template('index.html', chatgpt_response=None)
