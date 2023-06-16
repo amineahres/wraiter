@@ -36,9 +36,9 @@ def index():
         )
 
         # Handle the ChatGPT response and extract the adapted query
-        chatgpt_result = "Error: Failed to receive response from ChatGPT"
         if chatgpt_response.status_code == 200:
-            chatgpt_result = chatgpt_response.json()["choices"][0]["message"]["content"]
+            chatgpt_result = chatgpt_response.json()
+            chatgpt_result = chatgpt_result["choices"][0]["message"]["content"]
         else:
             print(chatgpt_response.status_code)
             print(chatgpt_response.content)
