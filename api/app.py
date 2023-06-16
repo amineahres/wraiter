@@ -11,6 +11,7 @@ def index():
         user_input = request.form['user_input']
         # Use OpenAI's API to get the response from ChatGPT
         openai.api_key = os.environ.get('OPENAI_API_KEY')
+        print(openai.api_key) 
         response = openai.Completion.create(engine='davinci-codex', prompt=user_input, max_tokens=100)
         chatgpt_response = response.choices[0].text
 
