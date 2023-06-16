@@ -25,7 +25,7 @@ def index():
         }
 
         response = requests.post('https://api.openai.com/v1/engines/davinci-codex/completions', headers=headers, data=json.dumps(data))
-        chatgpt_response = response.json()['choices'][0]['text']
+        chatgpt_response = response.json()["choices"][0]["message"]["content"]
 
         # Save data to Supabase (This part remains unchanged)
         # ... code to save data to Supabase ...
