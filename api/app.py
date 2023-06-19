@@ -20,8 +20,16 @@ def index():
         content = request.form['content']
         
         # Create prompt
-        prompt = 'Find between triple quotes an input. from that input, please create a ' + content_type + '. thanks' 
+        prompt = 'Find between triple quotes an input. from that input, please create a ' + content_type + ' which has the following characteristics: \n
+        - Tone: ' + content_tone ' \n
+        - Length: ' + length ' \n
+        and take into account the following request: ' + additional_request + ' \n
+        % \n'
+         + content + 
+        '\n
+        %
         
+        print(prompt)
 
         # Use OpenAI's API to get the response from ChatGPT
         headers = {
