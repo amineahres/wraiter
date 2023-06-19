@@ -6,26 +6,33 @@
 </head>
 <body>
     <form action="/" method="post">
+        
         <label for="content_type">Content Type</label>
         <select name="content_type" id="content_type">
             <option value="email">Email</option>
             <option value="team_message">Team Message</option>
             <option value="social_media_post">Social Media Post</option>
         </select>
+        
         <label for="content_tone">Message Tone</label>
         <select name="content_tone" id="content_tone">
             <option value="formal">Formal</option>
             <option value="informal">Informal</option>
             <option value="friendly">Friendly</option>
         </select>
+        
         <label for="length">Length</label>
         <select name="length" id="length">
             <option value="short">Short</option>
             <option value="medium">Medium</option>
             <option value="long">Long</option>
         </select>
+        
         <label for="additional_request">Additional Request (optional):</label>
-        <input type="text" name="additional_request" id="additional_request" placeholder="placeholder">
+        <textarea name="additional_request" id="additional_request" rows="3" cols="50" placeholder="placeholder">
+
+        <label for="additional_request"> Content (required):</label>
+        <textarea name="content" id="content" rows="20" cols="50" placeholder="Put your text here">
     </form>
 
     {% if chatgpt_response %}
