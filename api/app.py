@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import requests
 import os
 import json
-from postgrest_py import PostgrestClient
+from supabase import Client
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
@@ -76,9 +76,13 @@ def index():
                 chatgpt_result = "Error: Failed to receive response from ChatGPT"
     
             return render_template('index.html', chatgpt_response=chatgpt_result)
-    
+
+            client = Client(
+            url=os.environ['SUPABASE_URL'],
+            key=os.environ['SUPABASE_KEY'],    
+            )
             # Save data to Supabase
-            supabase.insert({
+            client.table('inputs').insert({
                 'input_type': input_type,
                 'input_tone': input_tone,
                 'input_length': input_length,
