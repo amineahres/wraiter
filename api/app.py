@@ -16,7 +16,7 @@ def index():
         content_type = request.form['content_type']
         content_tone = request.form['content_tone']
         length = request.form['length']
-        additional_request = request.form['additional_request']
+        context = request.form['context']
         content = request.form['content']
         
         # Create prompt
@@ -24,7 +24,7 @@ def index():
         ' which has the following characteristics: \n' +
         '- Tone: ' + content_tone + ' \n' +
         '- Length: ' + length + ' \n' +
-        'and take into account the following request: ' + additional_request + ' \n' +
+        'and take into account the following request: ' + context + ' \n' +
         '% \n' +
         content + 
         '\n%')
