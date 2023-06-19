@@ -77,16 +77,16 @@ def index():
     
             return render_template('index.html', chatgpt_response=chatgpt_result)
     
-    # Save data to Supabase
-    supabase.insert({
-        'input_type': input_type,
-        'input_tone': input_tone,
-        'input_length': input_length,
-        'input_context': input_context,
-        'input_content': input_content,
-        'output_prompt': output_prompt,
-        'output_result': output_result 
-    })
+            # Save data to Supabase
+            supabase.insert({
+                'input_type': input_type,
+                'input_tone': input_tone,
+                'input_length': input_length,
+                'input_context': input_context,
+                'input_content': input_content,
+                'output_prompt': output_prompt,
+                'output_result': chatgpt_result 
+            })
     
     return render_template('index.html', chatgpt_response=None)
 
