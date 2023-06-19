@@ -20,7 +20,7 @@ def index():
         input_content = request.form['input_content']
 
         # Make sure that content is not null
-        if content is None or len(content) < 10:
+        if input_content is None or len(input_content) < 10:
             chatgpt_result = "Please fill in the content with at least 10 characters."
             return render_template('index.html', chatgpt_response=chatgpt_result)
         else:
