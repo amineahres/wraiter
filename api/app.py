@@ -18,7 +18,11 @@ def index():
         length = request.form['length']
         context = request.form['context']
         content = request.form['content']
-        
+
+        # Make sure that content is not null
+        if content is None or len(content) < 10:
+            chatgpt_result = "Please fill in the content with at least 5 characters."
+        else:
         # Create prompt
         prompt = ('Find between percent signs an input. from that input, please create a ' + content_type + 
         ' which has the following characteristics: \n' +
@@ -55,6 +59,8 @@ def index():
 
         # Handle the ChatGPT response and extract the adapted query
         chatgpt_result = None
+
+        
         if chatgpt_response.status_code == 200:
             chatgpt_result = chatgpt_response.json()
             chatgpt_result = chatgpt_result["choices"][0]["message"]["content"]
