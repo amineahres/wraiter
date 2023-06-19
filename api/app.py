@@ -21,7 +21,7 @@ def index():
 
         # Make sure that content is not null
         if content is None or len(content) < 10:
-            chatgpt_result = "Please fill in the content with at least 5 characters."
+            chatgpt_result = "Please fill in the content with at least 10 characters."
             return render_template('index.html', chatgpt_response=chatgpt_result)
         else:
             # Create prompt
