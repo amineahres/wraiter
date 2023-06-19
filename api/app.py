@@ -71,6 +71,6 @@ def index():
     
             return render_template('index.html', chatgpt_response=chatgpt_result)
     
-        return render_template('index.html', chatgpt_response=None)
+    return render_template('index.html', chatgpt_response=None)
 
 # Note: You don't need to have app.run() here as Vercel will handle running the application
