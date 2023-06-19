@@ -22,6 +22,7 @@ def index():
         # Make sure that content is not null
         if content is None or len(content) < 10:
             chatgpt_result = "Please fill in the content with at least 5 characters."
+            return render_template('index.html', chatgpt_response=chatgpt_result)
         else:
             # Create prompt
             prompt = ('Find between percent signs an input. from that input, please create a ' + content_type + 
