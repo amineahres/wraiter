@@ -20,7 +20,7 @@ def index():
         content = request.form['content']
         
         # Create prompt
-        prompt = ('Find between percentage signs an input. from that input, please create a ' + content_type + 
+        prompt = ('Find between percent signs an input. from that input, please create a ' + content_type + 
         ' which has the following characteristics: \n' +
         '- Tone: ' + content_tone + ' \n' +
         '- Length: ' + length + ' \n' +
