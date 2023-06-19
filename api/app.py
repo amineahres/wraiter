@@ -13,11 +13,11 @@ def index():
     if request.method == 'POST':
 
         # Retrieve all users inputs
-        content_type = request.form['content_type']
-        content_tone = request.form['content_tone']
-        length = request.form['length']
-        context = request.form['context']
-        content = request.form['content']
+        input_type = request.form['input_type']
+        input_tone = request.form['input_tone']
+        input_length = request.form['input_length']
+        input_context = request.form['input_context']
+        input_content = request.form['input_content']
 
         # Make sure that content is not null
         if content is None or len(content) < 10:
@@ -25,13 +25,13 @@ def index():
             return render_template('index.html', chatgpt_response=chatgpt_result)
         else:
             # Create prompt
-            prompt = ('Find between percent signs an input. from that input, please create a ' + content_type + 
+            prompt = ('Find between percent signs an input. from that input, please create a ' + input_type + 
             ' which has the following characteristics: \n' +
-            '- Tone: ' + content_tone + ' \n' +
-            '- Length: ' + length + ' \n' +
-            'and take into account the following request: ' + context + ' \n' +
+            '- Tone: ' + input_tone + ' \n' +
+            '- Length: ' + input_length + ' \n' +
+            'and take into account the following request: ' + input_context + ' \n' +
             '% \n' +
-            content + 
+            input_content + 
             '\n%')
             
             print(prompt)
