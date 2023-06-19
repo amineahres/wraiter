@@ -11,7 +11,17 @@ chatgpt_api_url = "https://api.openai.com/v1/chat/completions"
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        user_input = request.form['user_input']
+
+        # Retrieve all users inputs
+        content_type = request.form['content_type']
+        content_tone = request.form['content_tone']
+        length = request.form['length']
+        additional_request = request.form['additional_request']
+        content = request.form['content']
+        
+        # Create prompt
+        prompt = 'Find between triple quotes an input. from that input, please create a ' + content_type + '. thanks' 
+        
 
         # Use OpenAI's API to get the response from ChatGPT
         headers = {
@@ -20,7 +30,7 @@ def index():
         }
 
         messages = [
-            {"role": "user", "content": user_input}
+            {"role": "user", "content": prompt}
         ]
 
         # Send the API request to ChatGPT
@@ -30,8 +40,8 @@ def index():
             json={
                 "messages": messages,
                 "model": "gpt-3.5-turbo",
-                "max_tokens": 370,
-                "temperature": 0.3
+                "max_tokens": 600,
+                "temperature": 0.5
             }
         )
 
