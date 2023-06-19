@@ -2,10 +2,13 @@ from flask import Flask, request, render_template
 import requests
 import os
 import json
+from supabase_py import create_client, Client
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+SUPABASE_URL = 'https://qkhixorvlsmwhfjuflqm.supabase.co'
+SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFraGl4b3J2bHNtd2hmanVmbHFtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY4NDE4NjQsImV4cCI6MjAwMjQxNzg2NH0.6g8qVcUscMlN2GpCG6sDm2LOZngnKGyQ0moEiZaWK8g'
 chatgpt_api_url = "https://api.openai.com/v1/chat/completions"
 
 @app.route('/', methods=['GET', 'POST'])
@@ -18,6 +21,7 @@ def index():
         input_length = request.form['input_length']
         input_context = request.form['input_context']
         input_content = request.form['input_content']
+
 
         # Make sure that content is not null
         if input_content is None or len(input_content) < 10:
@@ -65,12 +69,25 @@ def index():
             if chatgpt_response.status_code == 200:
                 chatgpt_result = chatgpt_response.json()
                 chatgpt_result = chatgpt_result["choices"][0]["message"]["content"]
+            
             else:
                 print(chatgpt_response.status_code)
                 print(chatgpt_response.content)
                 chatgpt_result = "Error: Failed to receive response from ChatGPT"
     
             return render_template('index.html', chatgpt_response=chatgpt_result)
+    
+    # Save data to Supabase
+    data = {
+        "input_type": input_type,
+        "input_tone": input_tone,
+        "input_length": input_length,
+        "input_context": input_context,
+        "input_content": input_content,
+        "output_prompt": output_prompt,
+        "output_result": output_result 
+    }
+    supabase.table('user_inputs').insert(data)
     
     return render_template('index.html', chatgpt_response=None)
 
