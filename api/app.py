@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import requests
 import os
 import json
-from postgrest_py import Postgrest
+from postgrest-py import Postgrest
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
