@@ -7,36 +7,36 @@
 <body>
     <form action="/" method="post">
         
-        <label for="content_type">Content Type</label>
-        <select name="content_type" id="content_type">
+        <label for="input_type">Content Type</label>
+        <select name="input_type" id="input_type">
             <option value="email">Email</option>
             <option value="team_message">Team Message</option>
             <option value="social_media_post">Social Media Post</option>
         </select>
         <br>
         
-        <label for="content_tone">Message Tone</label>
-        <select name="content_tone" id="content_tone">
+        <label for="input_tone">Tone</label>
+        <select name="input_tone" id="input_tone">
             <option value="formal">Formal</option>
             <option value="informal">Informal</option>
             <option value="friendly">Friendly</option>
         </select>
         <br>
         
-        <label for="length">Length</label>
-        <select name="length" id="length">
+        <label for="input_length">Length</label>
+        <select name="input_length" id="input_length">
             <option value="short">Short</option>
             <option value="medium">Medium</option>
             <option value="long">Long</option>
         </select>
         <br>
         
-        <label for="context">Context (optional):</label>
-        <textarea name="context" id="context" rows="3" cols="50" placeholder="This is an email for my boss / This is a message for my colleagues on slack..."></textarea>
+        <label for="input_context">Context (optional):</label>
+        <textarea name="input_context" id="input_context" rows="3" cols="50" placeholder="This is an email for my boss / This is a message for my colleagues on slack..."></textarea>
         <br>
 
-        <label for="content"> Content (required):</label>
-        <textarea name="content" id="content" rows="20" cols="50" placeholder="Put your text here" required></textarea>
+        <label for="input_content"> Content (required):</label>
+        <textarea name="input_content" id="input_content" rows="20" cols="50" placeholder="Put your text here" required></textarea>
 
         <input type="submit" value="Generate Text">
     </form>
