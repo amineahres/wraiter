@@ -31,8 +31,8 @@
         </select>
         <br>
         
-        <label for="additional_request">Additional Request (optional):</label>
-        <textarea name="additional_request" id="additional_request" rows="3" cols="50" placeholder="placeholder"> </textarea>
+        <label for="context">Context (optional):</label>
+        <textarea name="context" id="context" rows="3" cols="50" placeholder="placeholder"> </textarea>
         <br>
 
         <label for="content"> Content (required):</label>
@@ -42,7 +42,7 @@
     </form>
 
     {% if chatgpt_response %}
-        <p>ChatGPT's Response: {{ chatgpt_response }}</p>
+        <p>{{ chatgpt_response }}</p>
     {% endif %}
 </body>
 </html>
