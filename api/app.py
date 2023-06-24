@@ -75,7 +75,7 @@ def index():
                 chatgpt_result = "Error: Failed to receive response from ChatGPT"
 
             
-            return render_template('index.html', chatgpt_response=chatgpt_result)
+            #return render_template('index.html', chatgpt_response=chatgpt_result)
 
             print('level 1 reached')
             
@@ -95,6 +95,8 @@ def index():
                     'output_prompt': prompt,
                     'output_result': chatgpt_result 
                 })
+            
+            return render_template('index.html', chatgpt_response=chatgpt_result)
     
     return render_template('index.html', chatgpt_response=None)
 
