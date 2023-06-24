@@ -74,7 +74,6 @@ def index():
                 print(chatgpt_response.content)
                 chatgpt_result = "Error: Failed to receive response from ChatGPT"
 
-            print('level 0 reached')
             
             return render_template('index.html', chatgpt_response=chatgpt_result)
 
