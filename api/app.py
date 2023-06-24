@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import requests
 import os
 import json
-from supabase_py import create_client
+from supabase import create_client, Client
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
@@ -78,19 +78,19 @@ def index():
 
             print('level 1 reached')
             
-            client = create_client(SUPABASE_URL, SUPABASE_KEY)
+            url: str = os.environ.get("SUPABASE_URL")
+            key: str = os.environ.get("SUPABASE_KEY")
             
             # Save data to Supabase
             if chatgpt_response is not None:
                 print('Level 2 reached')
-                client.table('inputs').insert({
-                    'input_type': input_type,
-                    'input_tone': input_tone,
-                    'input_length': input_length,
-                    'input_context': input_context,
-                    'input_content': input_content,
-                    'output_prompt': prompt,
-                    'output_result': chatgpt_result 
-                })
+                supabase: Client = create_client(url, key)
+                
+                data, count = supabase
+                .table('select * from user_inputs')
+                .insert({"id": 1, "name": "Denmark"})
+                .execute({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result})
+            
             return render_template('index.html', chatgpt_response=chatgpt_result)
+    
     return render_template('index.html', chatgpt_response=None)
