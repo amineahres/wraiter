@@ -73,16 +73,20 @@ def index():
                 print(chatgpt_response.status_code)
                 print(chatgpt_response.content)
                 chatgpt_result = "Error: Failed to receive response from ChatGPT"
-    
+
+            print('level 0 reached')
+            
             return render_template('index.html', chatgpt_response=chatgpt_result)
 
+            print('level 1 reached')
+            
             client = Client(
             url=os.environ['SUPABASE_URL'],
             key=os.environ['SUPABASE_KEY'],    
             )
             # Save data to Supabase
             if chatgpt_response is not None:
-                print('Level reached')
+                print('Level 2 reached')
                 client.table('inputs').insert({
                     'input_type': input_type,
                     'input_tone': input_tone,
