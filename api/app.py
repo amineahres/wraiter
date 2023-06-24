@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import requests
 import os
 import json
-from supabase import Client
+from supabase_py import create_client
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
