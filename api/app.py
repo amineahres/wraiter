@@ -87,7 +87,7 @@ def index():
                 supabase: Client = create_client(url, key)
                 
                 data, count = supabase
-                .table('user_inputs')
+                .table('user_inputs'):
                 .insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result})
                 .execute()
             
