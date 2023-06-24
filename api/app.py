@@ -79,8 +79,8 @@ def index():
 
             print('level 1 reached')
             
-            ##url: str = os.environ.get("SUPABASE_URL")
-            ##key: str = os.environ.get("SUPABASE_KEY")
+            url: str = os.environ.get("SUPABASE_URL")
+            key: str = os.environ.get("SUPABASE_KEY")
             
             # Save data to Supabase
             if chatgpt_response is not None:
