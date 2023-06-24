@@ -78,10 +78,8 @@ def index():
 
             print('level 1 reached')
             
-            client = Client(
-            url=os.environ['SUPABASE_URL'],
-            key=os.environ['SUPABASE_KEY'],    
-            )
+            client = create_client(SUPABASE_URL, SUPABASE_KEY)
+            
             # Save data to Supabase
             if chatgpt_response is not None:
                 print('Level 2 reached')
