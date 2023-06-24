@@ -78,20 +78,20 @@ def index():
 
             print('level 1 reached')
             
-            url: str = os.environ.get("SUPABASE_URL")
-            key: str = os.environ.get("SUPABASE_KEY")
+            ##url: str = os.environ.get("SUPABASE_URL")
+            ##key: str = os.environ.get("SUPABASE_KEY")
             
             # Save data to Supabase
-            if chatgpt_response is not None:
-                print('Level 2 reached')
-                supabase: Client = create_client(url, key)
+            ##if chatgpt_response is not None:
+            ##    print('Level 2 reached')
+            ##    supabase: Client = create_client(url, key)
                 
                 #data, count = supabase
                 #.table('user_inputs'):
                 #.insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result})
                 #.execute()
 
-                supabase.table('user_inputs').insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result}).execute()
+            ##    supabase.table('user_inputs').insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result}).execute()
                 
             return render_template('index.html', chatgpt_response=chatgpt_result)
     
