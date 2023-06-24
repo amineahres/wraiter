@@ -6,6 +6,7 @@ from supabase import Client
 
 app = Flask(__name__, template_folder=os.path.abspath('templates'))
 
+
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 SUPABASE_URL = os.environ.get('SUPABASE_URL')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
