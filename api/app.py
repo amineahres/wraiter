@@ -38,7 +38,7 @@ def index():
             '% \n' +
             input_content + 
             '\n%')
-    
+            
             # Use OpenAI's API to get the response from ChatGPT
             headers = {
                 'Content-Type': 'application/json',
@@ -69,6 +69,7 @@ def index():
                 chatgpt_result = chatgpt_response.json()
                 chatgpt_result = chatgpt_result["choices"][0]["message"]["content"]
             
+            
             else:
                 print(chatgpt_response.status_code)
                 print(chatgpt_response.content)
@@ -82,16 +83,16 @@ def index():
             ##key: str = os.environ.get("SUPABASE_KEY")
             
             # Save data to Supabase
-            ##if chatgpt_response is not None:
-            ##    print('Level 2 reached')
-            ##    supabase: Client = create_client(url, key)
+            if chatgpt_response is not None:
+                print('Level 2 reached')
+                supabase: Client = create_client(url, key)
                 
                 #data, count = supabase
                 #.table('user_inputs'):
-                #.insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result})
+                #.insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": prompt, "output_result": chatgpt_result_result})
                 #.execute()
 
-            ##    supabase.table('user_inputs').insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": output_prompt, "output_result": output_result}).execute()
+                supabase.table('user_inputs').insert({"input_type": input_type, "input_tone": input_tone, "input_length": input_length, "input_context": input_context, "input_content": input_content, "output_prompt": prompt, "output_result": chatgpt_result}).execute()
                 
             return render_template('index.html', chatgpt_response=chatgpt_result)
     
