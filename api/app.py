@@ -83,15 +83,16 @@ def index():
             key=os.environ['SUPABASE_KEY'],    
             )
             # Save data to Supabase
-            client.table('inputs').insert({
-                'input_type': input_type,
-                'input_tone': input_tone,
-                'input_length': input_length,
-                'input_context': input_context,
-                'input_content': input_content,
-                'output_prompt': output_prompt,
-                'output_result': chatgpt_result 
-            })
+            if chatgpt_response is not None:
+                client.table('inputs').insert({
+                    'input_type': input_type,
+                    'input_tone': input_tone,
+                    'input_length': input_length,
+                    'input_context': input_context,
+                    'input_content': input_content,
+                    'output_prompt': prompt,
+                    'output_result': chatgpt_result 
+                })
     
     return render_template('index.html', chatgpt_response=None)
 
