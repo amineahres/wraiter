@@ -38,8 +38,6 @@ def index():
             '% \n' +
             input_content + 
             '\n%')
-            
-            print(prompt)
     
             # Use OpenAI's API to get the response from ChatGPT
             headers = {
@@ -84,6 +82,7 @@ def index():
             )
             # Save data to Supabase
             if chatgpt_response is not None:
+                print('Level reached')
                 client.table('inputs').insert({
                     'input_type': input_type,
                     'input_tone': input_tone,
